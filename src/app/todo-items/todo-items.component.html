@@ -1,12 +1,10 @@
-<div class="jumbotron py-3">
-    <h1 class="display-4 text-center">ToDo Item Register</h1>
-</div>
 
+<div class="container">
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <app-todo-item-form></app-todo-item-form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-8">
         <table class="table">
             <thead class="table-light">
                 <tr>
@@ -14,21 +12,23 @@
                     <th>Item Description</th>
                     <th>Item Status</th>
                     <th>Last Updated</th>
-                    <th>Delete</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let pd of service.list">
-                    <td (click)="populateForm(pd)">{{ pd.itemName }}</td>
-                    <td (click)="populateForm(pd)">{{ pd.itemDescription }}</td>
-                    <td (click)="populateForm(pd)">{{ pd.itemStatus }}</td>
-                    <td (click)="populateForm(pd)">{{ pd.lastUpdated }}</td>
+                    <td>{{ pd.itemName }}</td>
+                    <td>{{ pd.itemDescription }}</td>
+                    <td>{{ pd.itemStatus }}</td>
+                    <td>{{ pd.lastUpdated | date:'short' }} </td>
 
-                    <td>
+                    <td class="action-wrapper">
                         <i class="fa fa-trash-o fa-lg text-danger" (click)="onDelete(pd.itemId)"></i>
+                        <i class="fa fa-pencil-square-o fa-lg text-success" (click)="onEdit(pd)"></i>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+</div>
 </div>

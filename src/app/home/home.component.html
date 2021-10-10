@@ -1,12 +1,12 @@
-<h1 style="text-align: center;">To-Do list Online Application</h1>
-
+<div class="main-wrapper card">
+<h3>To-Do list Online Application</h3>
 <br>
 <div *ngIf="isUserAuthenticated()" style="color:blue;">
   <h2>
     <app-todo-items></app-todo-items>
   </h2>
 </div>
-
+<div class="hm-btn-wrapper">
   <div *ngIf="!isUserAuthenticated()">
     <div class="form-group">
       <a [routerLink]="['/login']" routerLinkActive="active"><button class="btn btn-info btn-lg btn-block" type="submit">Login</button></a>
@@ -18,7 +18,9 @@
     </div>
   </div>
   <div *ngIf="isUserAuthenticated()">
-      <div class="form-group">
+      <div class="logout-btn form-group">
         <button class="btn btn-info btn-lg btn-block" type="submit"><a class="logout" (click)="logOut()">Logout</a></button>
     </div>
   </div>
+  </div>
+</div>

@@ -8,22 +8,24 @@ import { TodoAppService } from '../services/todo-app.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: [
-  ]
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  getUsername: any;
 
   constructor(public service: TodoAppService,
     private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getUsername = localStorage.getItem('user')
+
   }
 
   register(form: NgForm) {
     this.service.registerUser().subscribe(
       res => {
         this.resetForm(form);
-        this.service.refreshList();
+        this.service.refreshList(this.getUsername);
         this.toastr.success("Submitted successfully", "New User Registeration Complete");
       },
       err => { console.log(err); }

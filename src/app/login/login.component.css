@@ -1,0 +1,32 @@
+
+.main-wrapper{
+  width:45%;
+  margin: auto;
+  margin-top: 35px;
+  border: 1px solid #ccc;
+}
+.main-wrapper h3{
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.login-btn-wrapper {
+  width: 250px;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.login-btn-wrapper a button {
+  width: 113px;
+  margin-top: 30px;
+}
+
+.login-btn-wrapper a {
+  display: inline-block;
+  margin-top: 20px;
+  margin: auto;
+  margin-right: 10px;
+}
+
+

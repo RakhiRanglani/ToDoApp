@@ -7,15 +7,17 @@ import { TodoAppService } from 'src/app/services/todo-app.service';
 @Component({
   selector: 'app-todo-item-form',
   templateUrl: './todo-item-form.component.html',
-  styles: [
-  ]
+  styleUrls: ['./todo-item-form.component.css']
+
 })
 export class TodoItemFormComponent implements OnInit {
+  getUsername: any;
 
   constructor(public service: TodoAppService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.getUsername = localStorage.getItem('user')
 
   }
 
@@ -27,14 +29,13 @@ export class TodoItemFormComponent implements OnInit {
     } else {
       this.updateRecord(form);
     }
-
   }
 
   insertRecord(form: NgForm) {
     this.service.postToDoItem().subscribe(
       res => {
         this.resetForm(form);
-        this.service.refreshList();
+        this.service.refreshList(this.getUsername);
         this.toastr.success("Submitted successfully", "ToDo Item Register");
       },
       err => { console.log(err); }
@@ -47,7 +48,7 @@ export class TodoItemFormComponent implements OnInit {
     this.service.putToDoItem().subscribe(
       res => {
         this.resetForm(form);
-        this.service.refreshList();
+        this.service.refreshList(this.getUsername);
         this.toastr.info("Updated successfully", "ToDo Item Register");
       },
       err => { console.log(err); }

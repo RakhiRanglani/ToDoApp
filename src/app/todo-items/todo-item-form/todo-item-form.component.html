@@ -1,3 +1,8 @@
+
+<div class="item-wrapper card">
+    <div class="todo-register-wrapper py-3">
+        <h3 class="text-center">Add Or Edit Task</h3>
+    </div>
 <form novalidate #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
     <input
         type="hidden"
@@ -5,7 +10,7 @@
         [value] = "service.todoData.itemId"
     >
     <div class="form-group">
-        <label>ITEM NAME</label>
+        <h4>ITEM NAME</h4>
         <input
             class="form-control form-control-lg"
             placeholder="Item Name"
@@ -21,7 +26,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label>ITEM DESCRIPTION</label>
+        <h4>ITEM DESCRIPTION</h4>
         <input
             class="form-control form-control-lg"
             placeholder="Item Description"
@@ -36,8 +41,8 @@
             <p *ngIf="itemDescription.errors?.required">Item description is required!</p>
         </div>
     </div>
-    <div class="form-group">
-        <label>ITEM STATUS</label>
+    <div class="item-status form-group">
+        <h4>ITEM STATUS</h4>
         <input
             class="form-control form-control-lg"
             type="checkbox"
@@ -49,7 +54,7 @@
         >
     </div>
     <div class="form-group">
-        <label>USER NAME</label>
+        <!-- <h4>USER NAME</h4> -->
         <input
             class="form-control form-control-lg"
             name="userName"
@@ -60,12 +65,13 @@
         >
     </div>
     <div class="form-group">
-        <label>LAST UPDATED</label>
+        <h4>LAST UPDATED</h4>
         <input
             class="form-control form-control-lg"
             name="lastUpdated"
             #itemStatus="ngModel"
             [(ngModel)]="service.todoData.lastUpdated"
+              
         >
     </div>
     <div class="form-group">

@@ -1,0 +1,12 @@
+table thead th, table tbody tr{
+    font-size: 18px;
+}
+
+table tbody tr{
+    color: black;
+}
+
+.action-wrapper i {
+    margin-right: 15px;
+    cursor: pointer;
+}

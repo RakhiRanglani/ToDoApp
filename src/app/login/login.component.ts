@@ -7,8 +7,7 @@ import { TodoAppService } from '../services/todo-app.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [
-  ]
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean | undefined;
@@ -19,14 +18,17 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login(form: NgForm) {
+  login(value:any) {
+
+    let username = value.username; 
     this.service.loginUser().subscribe(
       res => {
         const token = (<any>res).token;
         localStorage.setItem("jwt", token);
+        localStorage.setItem("user", username);
         this.invalidLogin = false;
         this.router.navigate(["/"]);
-        this.toastr.success("LoggedIn successfully");
+        this.toastr.success("LoggedIn successfully",username);
       },
       err => {
         this.invalidLogin = true;

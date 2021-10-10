@@ -45,8 +45,10 @@ export class TodoAppService {
     });
   }
 
-  refreshList() {
-    this.http.get(this.baseURL)
+  refreshList(Username:any) {
+    console.log("****",`${this.baseURL}/${Username}`);
+    
+    this.http.get(`${this.baseURL}/${Username}`)
     .toPromise()
     .then(res => {
       this.list = res as TodoItem[]

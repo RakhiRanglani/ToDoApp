@@ -6,19 +6,19 @@ import { TodoAppService } from '../services/todo-app.service';
 @Component({
   selector: 'app-todo-items',
   templateUrl: './todo-items.component.html',
-  styles: [
-  ]
+  styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemsComponent implements OnInit {
-
+ getUsername: any;
   constructor(public service: TodoAppService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.service.refreshList();
+    this.getUsername = localStorage.getItem('user')
+    this.service.refreshList(this.getUsername);
   }
 
-  populateForm(selectedRecord: TodoItem) {
+  onEdit(selectedRecord: TodoItem) {
     this.service.todoData = Object.assign({}, selectedRecord);
   }
 
@@ -26,7 +26,7 @@ export class TodoItemsComponent implements OnInit {
     if (confirm("Are you sure you want to delete this record?")) {
       this.service.deleteToDoItem(id)
       .subscribe( res => {
-        this.service.refreshList();
+        this.service.refreshList(this.getUsername);
         this.toastr.error("Deleted susseccfully", "ToDo Item Register");
       },
       err => {

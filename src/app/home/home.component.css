@@ -1,0 +1,21 @@
+.main-wrapper{
+  width:45%;
+  margin: auto;
+  margin-top: 35px;
+  border: 1px solid #ccc;
+}
+.main-wrapper h3{
+  text-align: center;
+}
+.main-wrapper{
+  width: 100%;
+}
+.hm-btn-wrapper {
+  width:200px;
+  margin: auto;
+  margin-bottom: 40px;
+}
+
+.logout-btn {
+margin-top: 30px;
+}
